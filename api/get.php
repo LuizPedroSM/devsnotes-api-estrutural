@@ -18,15 +18,15 @@ if ($method === 'get') {
                 'body' => $info['body']
             ];
         } else {
-            http_response_code(404);
             $data['error'] = 'ID não existe';
+            http_response_code(404);
         }
     } else {
-        http_response_code(400);
         $data['error'] = 'ID não enviado';
+        http_response_code(400);
     }
 } else {
-    http_response_code(405);
     $data['error'] = 'Método não permitido (apenas GET)';
+    http_response_code(405);
 }
 require('../return.php');

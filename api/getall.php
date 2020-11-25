@@ -5,7 +5,7 @@ $method = strtolower($_SERVER['REQUEST_METHOD']);
 
 if ($method === 'get') {
     $sql = $pdo->query("SELECT * FROM notes");
-    if ($sql->rowCount() > 0) {
+    if ($sql) {
         $info = $sql->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($info as $item) {
@@ -15,6 +15,9 @@ if ($method === 'get') {
                 'body' => $item['body']
             ];
         }
+    } else {
+        $data['error'] = 'Erro ao requisitar os dados do Banco';
+        http_response_code(500);
     }
 } else {
     http_response_code(405);
