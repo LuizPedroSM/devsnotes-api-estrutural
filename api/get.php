@@ -4,7 +4,7 @@ require('../config.php');
 $method = strtolower($_SERVER['REQUEST_METHOD']);
 
 if ($method === 'get') {
-    $id = filter_input(INPUT_GET, 'id');
+    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     if ($id) {
         $sql = $pdo->prepare("SELECT * FROM notes WHERE id = :id");
         $sql->bindValue(':id', $id);
