@@ -28,7 +28,7 @@ if ($method === 'post') {
         http_response_code(400);
     }
 } else {
-    $data['error'] = 'Método não permitido (apenas GET)';
+    $data['error'] = 'Método não permitido (apenas POST)';
     http_response_code(405);
 }
 require('../return.php');
